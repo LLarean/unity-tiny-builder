@@ -16,3 +16,14 @@ This repository is a practice of writing programs in the spirit of [Elegant Obje
 https://semver.org/
 
 A build system that allows you to automatically raise the project version number and format the output file name
+
+INSTALLATION
+There are ~~4~~ ways to install this utility:
+
+~~import .unitypackage via Assets-Import Package~~
+~~clone/download this repository and move files to your Unity project's Assets folder~~
+~~import it from Asset Store~~
+(via Package Manager) Select Add package from git URL from the add menu. A text box and an Add button appear. Enter a valid Git URL in the text box:
+https://github.com/llarean/unity-tiny-builder.git
+(via Package Manager) add the following line to Packages/manifest.json:
+"com.llarean.unity-tiny-builder": "https://github.com/llarean/unity-tiny-builder.git"

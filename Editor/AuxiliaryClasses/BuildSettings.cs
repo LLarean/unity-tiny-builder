@@ -7,7 +7,6 @@ namespace TinyBuilder
     {
         public string Prefix = "";
         public string ProjectName = "MyGame_";
-        public bool HasVersion;
         public string Postfix = "";
         
         public string KeystorePath = "";
@@ -15,8 +14,8 @@ namespace TinyBuilder
         public string KeyaliasName = "";
         public string KeyaliasPassword = "";
         
-        public string ApkOutputPath = "";
-        public string AabOutputPath = "";
+        public string APKOutputPath = "C:/Builds/My-Game/Android/APK";
+        public string AABOutputPath = "C:/Builds/My-Game/Android/AAB";
     }
 }
 #endif

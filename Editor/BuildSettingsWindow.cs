@@ -34,7 +34,6 @@ namespace TinyBuilder
             
             _buildSettings.Prefix = EditorGUILayout.TextField("Prefix", _buildSettings.Prefix);
             _buildSettings.ProjectName = EditorGUILayout.TextField("Project Name", _buildSettings.ProjectName);
-            _buildSettings.HasVersion = EditorGUILayout.Toggle("Has Version", _buildSettings.HasVersion);
             _buildSettings.Postfix = EditorGUILayout.TextField("Postfix", _buildSettings.Postfix);
             
             EditorGUILayout.Space();
@@ -56,8 +55,8 @@ namespace TinyBuilder
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Build Paths", EditorStyles.boldLabel);
-            _buildSettings.ApkOutputPath = EditorGUILayout.TextField("APK Output Path", _buildSettings.ApkOutputPath);
-            _buildSettings.AabOutputPath = EditorGUILayout.TextField("AAB Output Path", _buildSettings.AabOutputPath);
+            _buildSettings.APKOutputPath = EditorGUILayout.TextField("APK Output Path", _buildSettings.APKOutputPath);
+            _buildSettings.AABOutputPath = EditorGUILayout.TextField("AAB Output Path", _buildSettings.AABOutputPath);
 
             EditorGUILayout.Space(20);
 
@@ -73,8 +72,8 @@ namespace TinyBuilder
             EditorUtility.SetDirty(_buildSettings);
             AssetDatabase.SaveAssets();
             
-            FolderPaths.APK = _buildSettings.ApkOutputPath;
-            FolderPaths.AAB = _buildSettings.AabOutputPath;
+            FolderPaths.APK = _buildSettings.APKOutputPath;
+            FolderPaths.AAB = _buildSettings.AABOutputPath;
             
             PlayerSettings.Android.keystoreName = _buildSettings.KeystorePath;
             PlayerSettings.Android.keystorePass = _buildSettings.KeystorePassword;

@@ -9,20 +9,20 @@ namespace TinyBuilder
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKCurrent, false, 2)]
         private static void BuildAPKCurrent()
         {
-            new Builder().BuildAPK();
+            new Build().APK();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildAABCurrent, false, 3)]
         private static void BuildAABCurrent()
         {
-            new Builder().BuildAAB();
+            new Build().AAB();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKAABCurrent, false, 4)]
         private static void BuildBothCurrent()
         {
-            new Builder().BuildAPK();
-            new Builder().BuildAAB();
+            new Build().APK();
+            new Build().AAB();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKIncrement, false, 21)]
@@ -31,7 +31,7 @@ namespace TinyBuilder
             var appVersion = new AppVersion(Application.version).Increment();
             new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
 
-            new Builder().BuildAPK();
+            new Build().APK();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildAABIncrement, false, 22)]
@@ -40,7 +40,7 @@ namespace TinyBuilder
             var appVersion = new AppVersion(Application.version).Increment();
             new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
 
-            new Builder().BuildAAB();
+            new Build().AAB();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKAABIncrement, false, 23)]
@@ -49,8 +49,8 @@ namespace TinyBuilder
             var appVersion = new AppVersion(Application.version).Increment();
             new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
 
-            new Builder().BuildAPK();
-            new Builder().BuildAAB();
+            new Build().APK();
+            new Build().AAB();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildSettings, false, 41)]
