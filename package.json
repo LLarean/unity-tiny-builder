@@ -1,0 +1,19 @@
+{
+  "name": "com.llarean.unity-tiny-builder",
+  "displayName": "Tiny Builder",
+  "version": "0.0.1",
+  "documentationUrl": "https://github.com/LLarean/unity-tiny-builder",
+  "changelogUrl": "https://github.com/llarean/unity-tiny-builder/releases",
+  "licensesUrl": "https://github.com/llarean/unity-tiny-builder/blob/master/LICENSE.md",
+  "description": "A simple utility to simplify some of the assembly elements for Android",
+  "keywords": [
+    "unity",
+	"builder",
+	"build"
+  ],
+  "author": {
+    "name": "LLarean",
+    "email": "llarean@yandex.ru",
+    "url": "https://github.com/LLarean"
+  }
+}
