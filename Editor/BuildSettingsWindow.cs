@@ -71,7 +71,7 @@ namespace TinyBuilder
             EditorUtility.SetDirty(_settings);
             AssetDatabase.SaveAssets();
             
-            BuilderStrings.FileNamePrefix = $"{_settings.ProjectName}_{_settings.Version}";
+            FileNameParts.Main = $"{_settings.ProjectName}_{_settings.Version}";
             FolderPaths.APK = _settings.ApkOutputPath;
             FolderPaths.AAB = _settings.AabOutputPath;
             

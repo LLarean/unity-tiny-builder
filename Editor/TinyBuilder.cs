@@ -38,26 +38,26 @@ namespace TinyBuilder
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKIncrement, false, 21)]
         private static void BuildAPKIncrement()
         {
-            var appVersionIncrementer = new AppVersionIncrementer();
-            appVersionIncrementer.Increment();
-
+            var appVersion = new AppVersion(Application.version).Increment();
+            new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
+            
             BuildAPK();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildABBIncrement, false, 22)]
         private static void BuildABBIncrement()
         {
-            var appVersionIncrementer = new AppVersionIncrementer();
-            appVersionIncrementer.Increment();
-
+            var appVersion = new AppVersion(Application.version).Increment();
+            new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
+            
             BuildABB();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKABBIncrement, false, 23)]
         private static void BuildBothIncrement()
         {
-            var appVersionIncrementer = new AppVersionIncrementer();
-            appVersionIncrementer.Increment();
+            var appVersion = new AppVersion(Application.version).Increment();
+            new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
 
             BuildAPK();
             BuildABB();
@@ -79,8 +79,7 @@ namespace TinyBuilder
         {
             CreateDirectory(FolderPaths.APK);
 
-            string fileName = BuilderStrings.FileNamePrefix + Application.version + BuilderStrings.StoreName +
-                              BuilderStrings.ApkPostfix;
+            string fileName = FileNameParts.Main + Application.version + FileNameParts.Postfix + FileNameParts.ApkExtension;
             Build(FolderPaths.APK, fileName);
         }
 
@@ -88,7 +87,7 @@ namespace TinyBuilder
         {
             CreateDirectory(FolderPaths.AAB);
 
-            string fileName = BuilderStrings.FileNamePrefix + Application.version + BuilderStrings.ABBPostfix;
+            string fileName = FileNameParts.Main + Application.version + FileNameParts.AabExtension;
             Build(FolderPaths.AAB, fileName);
         }
 
@@ -122,7 +121,6 @@ namespace TinyBuilder
             }
             else if (summary.result == BuildResult.Failed)
             {
-                // Application.OpenURL("https://github.com");
                 Debug.LogError("Build failed");
             }
         }
