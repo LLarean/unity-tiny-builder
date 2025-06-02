@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace TinyBuilder
         {
             _appVersion = appVersion;
         }
-        
+
         public int Value()
         {
 #if UNITY_ANDROID
@@ -23,11 +24,11 @@ namespace TinyBuilder
         public BuildNumber EqualizeWithAppVersion()
         {
             string[] versionParts = _appVersion.Split('.');
-            
+
             int major = 0;
             int minor = 0;
             int patch = 1;
-            
+
             if (versionParts.Length != 3)
             {
                 Debug.LogWarning("Invalid version format");
@@ -38,7 +39,7 @@ namespace TinyBuilder
                 minor = int.Parse(versionParts[1]);
                 patch = int.Parse(versionParts[2]);
             }
-            
+
 #if UNITY_ANDROID
             PlayerSettings.Android.bundleVersionCode = patch;
             Debug.Log("Bundle Version Code has been changed to: " + PlayerSettings.bundleVersion);
@@ -49,3 +50,4 @@ namespace TinyBuilder
         }
     }
 }
+#endif

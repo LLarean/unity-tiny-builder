@@ -69,7 +69,7 @@ namespace TinyBuilder
         
         private string GetFileName()
         {
-            var settings = new Settings(FolderPaths.BuildSettings);
+            var settings = new BuildSettings(FolderPaths.BuildSettings);
 
             if (settings.HaveFile() == false)
             {
@@ -81,7 +81,7 @@ namespace TinyBuilder
         
         private string GetAPKFilePath()
         {
-            var settings = new Settings(FolderPaths.BuildSettings);
+            var settings = new BuildSettings(FolderPaths.BuildSettings);
 
             if (settings.HaveFile() == false)
             {
@@ -93,7 +93,7 @@ namespace TinyBuilder
         
         private string GetAABFilePath()
         {
-            var settings = new Settings(FolderPaths.BuildSettings);
+            var settings = new BuildSettings(FolderPaths.BuildSettings);
 
             if (settings.HaveFile() == false)
             {

@@ -1,21 +1,41 @@
 #if UNITY_EDITOR
+using UnityEditor;
 using UnityEngine;
 
 namespace TinyBuilder
 {
-    public class BuildSettings : ScriptableObject
+    public record BuildSettings
     {
-        public string Prefix = "";
-        public string ProjectName = "MyGame_";
-        public string Postfix = "";
+        private readonly string _buildSettingsPath;
+
+        public BuildSettings(string buildSettingsPath)
+        {
+            _buildSettingsPath = buildSettingsPath;
+        }
+
+        public bool HaveFile()
+        {
+            var buildSettings = AssetDatabase.LoadAssetAtPath<TinyBuilderSettings>(_buildSettingsPath);
+            return buildSettings != null;
+        }
+
+        public string FileName()
+        {
+            var buildSettings = AssetDatabase.LoadAssetAtPath<TinyBuilderSettings>(_buildSettingsPath);
+            return buildSettings.Prefix + buildSettings.ProjectName + Application.version + buildSettings.Postfix;
+        }
         
-        public string KeystorePath = "";
-        public string KeystorePassword = "";
-        public string KeyaliasName = "";
-        public string KeyaliasPassword = "";
+        public string APKFilePath()
+        {
+            var buildSettings = AssetDatabase.LoadAssetAtPath<TinyBuilderSettings>(_buildSettingsPath);
+            return buildSettings.APKOutputPath;
+        }
         
-        public string APKOutputPath = "C:/Builds/My-Game/Android/APK";
-        public string AABOutputPath = "C:/Builds/My-Game/Android/AAB";
+        public string AABFilePath()
+        {
+            var buildSettings = AssetDatabase.LoadAssetAtPath<TinyBuilderSettings>(_buildSettingsPath);
+            return buildSettings.AABOutputPath;
+        }
     }
 }
 #endif

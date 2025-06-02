@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 
 namespace TinyBuilder
@@ -34,3 +35,4 @@ namespace TinyBuilder
         }
     }
 }
+#endif
