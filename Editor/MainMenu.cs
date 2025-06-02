@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TinyBuilder
 {
-    public static class MainMenu
+    public abstract class MainMenu
     {
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKCurrent, false, 2)]
         private static void BuildAPKCurrent()

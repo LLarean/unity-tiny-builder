@@ -6,7 +6,7 @@ namespace TinyBuilder
 {
     public class BuildSettingsWindow : EditorWindow
     {
-        private static BuildSettings _settings;
+        private static BuildSettings _buildSettings;
 
         public static void ShowWindow()
         {
@@ -17,12 +17,14 @@ namespace TinyBuilder
 
         private static void LoadSettings()
         {
-            _settings = AssetDatabase.LoadAssetAtPath<BuildSettings>(FolderPaths.BuildSettings);
+            _buildSettings = AssetDatabase.LoadAssetAtPath<BuildSettings>(FolderPaths.BuildSettings);
 
-            if (_settings != null) return;
+            if (_buildSettings != null) return;
             
-            _settings = CreateInstance<BuildSettings>();
-            AssetDatabase.CreateAsset(_settings, FolderPaths.BuildSettings);
+            _buildSettings = CreateInstance<BuildSettings>();
+            _buildSettings.ProjectName = Application.productName;
+
+            AssetDatabase.CreateAsset(_buildSettings, FolderPaths.BuildSettings);
             AssetDatabase.SaveAssets();
         }
 
@@ -30,55 +32,54 @@ namespace TinyBuilder
         {
             GUILayout.Space(10);
             
-            _settings.ProjectName = EditorGUILayout.TextField("Project Name", _settings.ProjectName);
+            _buildSettings.Prefix = EditorGUILayout.TextField("Prefix", _buildSettings.Prefix);
+            _buildSettings.ProjectName = EditorGUILayout.TextField("Project Name", _buildSettings.ProjectName);
+            _buildSettings.HasVersion = EditorGUILayout.Toggle("Has Version", _buildSettings.HasVersion);
+            _buildSettings.Postfix = EditorGUILayout.TextField("Postfix", _buildSettings.Postfix);
             
-            _settings.Version = EditorGUILayout.TextField("Version", Application.version);
-
             EditorGUILayout.Space();
-            EditorGUILayout.LabelField("Android Settings", EditorStyles.boldLabel);
-            _settings.KeystorePath = EditorGUILayout.TextField("Keystore Path", _settings.KeystorePath);
+            EditorGUILayout.LabelField("Keystore Settings", EditorStyles.boldLabel);
+            _buildSettings.KeystorePath = EditorGUILayout.TextField("Keystore Path", _buildSettings.KeystorePath);
             
             if (GUILayout.Button("Select Keystore File", GUILayout.Height(20)))
             {
                 string path = EditorUtility.OpenFilePanel("Select Keystore", "../", "keystore");
                 if (!string.IsNullOrEmpty(path))
                 {
-                    _settings.KeystorePath = path;
+                    _buildSettings.KeystorePath = path;
                 }
             }
             
-            _settings.KeystorePassword = EditorGUILayout.PasswordField("Keystore Password", _settings.KeystorePassword);
-            _settings.KeyaliasName = EditorGUILayout.TextField("Key Alias", _settings.KeyaliasName);
-            _settings.KeyaliasPassword = EditorGUILayout.PasswordField("Alias Password", _settings.KeyaliasPassword);
+            _buildSettings.KeystorePassword = EditorGUILayout.PasswordField("Keystore Password", _buildSettings.KeystorePassword);
+            _buildSettings.KeyaliasName = EditorGUILayout.TextField("Key Alias", _buildSettings.KeyaliasName);
+            _buildSettings.KeyaliasPassword = EditorGUILayout.PasswordField("Alias Password", _buildSettings.KeyaliasPassword);
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Build Paths", EditorStyles.boldLabel);
-            _settings.ApkOutputPath = EditorGUILayout.TextField("APK Output Path", _settings.ApkOutputPath);
-            _settings.AabOutputPath = EditorGUILayout.TextField("AAB Output Path", _settings.AabOutputPath);
+            _buildSettings.ApkOutputPath = EditorGUILayout.TextField("APK Output Path", _buildSettings.ApkOutputPath);
+            _buildSettings.AabOutputPath = EditorGUILayout.TextField("AAB Output Path", _buildSettings.AabOutputPath);
 
             EditorGUILayout.Space(20);
+
             if (GUILayout.Button("Save Settings", GUILayout.Height(30)))
             {
                 SaveSettings();
                 Close();
             }
-
-
         }
 
         private void SaveSettings()
         {
-            EditorUtility.SetDirty(_settings);
+            EditorUtility.SetDirty(_buildSettings);
             AssetDatabase.SaveAssets();
             
-            FileNameParts.Main = $"{_settings.ProjectName}_{_settings.Version}";
-            FolderPaths.APK = _settings.ApkOutputPath;
-            FolderPaths.AAB = _settings.AabOutputPath;
+            FolderPaths.APK = _buildSettings.ApkOutputPath;
+            FolderPaths.AAB = _buildSettings.AabOutputPath;
             
-            PlayerSettings.Android.keystoreName = _settings.KeystorePath;
-            PlayerSettings.Android.keystorePass = _settings.KeystorePassword;
-            PlayerSettings.Android.keyaliasName = _settings.KeyaliasName;
-            PlayerSettings.Android.keyaliasPass = _settings.KeyaliasPassword;
+            PlayerSettings.Android.keystoreName = _buildSettings.KeystorePath;
+            PlayerSettings.Android.keystorePass = _buildSettings.KeystorePassword;
+            PlayerSettings.Android.keyaliasName = _buildSettings.KeyaliasName;
+            PlayerSettings.Android.keyaliasPass = _buildSettings.KeyaliasPassword;
         }
     }
 }

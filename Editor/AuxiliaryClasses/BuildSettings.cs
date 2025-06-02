@@ -5,17 +5,18 @@ namespace TinyBuilder
 {
     public class BuildSettings : ScriptableObject
     {
-        public string ProjectName = "MyGame";
-        
-        public string Version = Application.version;
+        public string Prefix = "";
+        public string ProjectName = "MyGame_";
+        public bool HasVersion;
+        public string Postfix = "";
         
         public string KeystorePath = "";
         public string KeystorePassword = "";
         public string KeyaliasName = "";
         public string KeyaliasPassword = "";
         
-        public string ApkOutputPath = "Builds/APK";
-        public string AabOutputPath = "Builds/AAB";
+        public string ApkOutputPath = "";
+        public string AabOutputPath = "";
     }
 }
 #endif

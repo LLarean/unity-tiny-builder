@@ -2,7 +2,6 @@
 using System.IO;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
-using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 namespace TinyBuilder
@@ -15,7 +14,9 @@ namespace TinyBuilder
         {
             _buildDirectory = new BuildDirectory(FolderPaths.APK).Initialize();
 
-            string fileName = FileNameParts.Main + Application.version + FileNameParts.Postfix + FileNameParts.ApkExtension;
+            var settings = AssetDatabase.LoadAssetAtPath<BuildSettings>(FolderPaths.BuildSettings);
+            string fileName = new Settings(settings).BuildFileName() + FileNameParts.ApkExtension;
+            
             new Builder().Build(FolderPaths.APK, fileName);
         }
 
@@ -23,7 +24,9 @@ namespace TinyBuilder
         {
             _buildDirectory = new BuildDirectory(FolderPaths.AAB).Initialize();
 
-            string fileName = FileNameParts.Main + Application.version + FileNameParts.AabExtension;
+            var settings = AssetDatabase.LoadAssetAtPath<BuildSettings>(FolderPaths.BuildSettings);
+            string fileName = new Settings(settings).BuildFileName() + FileNameParts.AabExtension;
+
             new Builder().Build(FolderPaths.APK, fileName);
         }
         
