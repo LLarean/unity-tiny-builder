@@ -7,7 +7,7 @@ namespace TinyBuilder
     {
         public string ProjectName = "MyGame";
         
-        public string Version = "1.0.1";
+        public string Version = Application.version;
         
         public string KeystorePath = "";
         public string KeystorePassword = "";
