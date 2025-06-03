@@ -1,4 +1,4 @@
-# ![unity](https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white) Tiny Builder
+# ![unity](https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white)  Tiny Builder
 
 <img alt="logo" src="https://www.objectionary.com/cactus.svg" height="100px" />  
 
@@ -6,24 +6,41 @@
 [![We recommend IntelliJ Rider](https://www.elegantobjects.org/intellij-idea.svg)](https://www.jetbrains.com/rider/)
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/LLarean/unity-tiny-builder/blob/master/LICENSE.md)
-[![Test Coverage](https://img.shields.io/codecov/c/)](https://codecov.io/github/)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a7dd2af28207403abc5ec77ebba303b1)](https://app.codacy.com/gh/LLarean/pocker-dice-console-eo/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![CodeFactor](https://www.codefactor.io/repository/github/llarean/unity-tiny-builder/badge)](https://www.codefactor.io/repository/github/llarean/unity-tiny-builder)
 
-A simple utility to simplify some of the assembly elements for Android
+A simple Android build automation utility
 
-This repository is a practice of writing programs in the spirit of [Elegant Objects](https://www.elegantobjects.org/)  
+This repository is a practice of writing programs in the spirit of [Elegant Objects](https://www.elegantobjects.org/)
 
-https://semver.org/
+The [Version Convention](https://semver.org/) that is used during the build 
 
-A build system that allows you to automatically raise the project version number and format the output file name
+# FEATURES
 
-INSTALLATION
-There are ~~4~~ ways to install this utility:
+- The build file name will be in the ProjectName_version format (`ProjectName_1.0.1`);
+- The ability to add a prefix to the file name;
+- The ability to add a postfix to the file name;
+- The ability to assemble both APK and AAB separately, or together;
+- Ability to automatically raise the build/patch number;
+- Creating a configuration file;
 
-~~import .unitypackage via Assets-Import Package~~
-~~clone/download this repository and move files to your Unity project's Assets folder~~
-~~import it from Asset Store~~
-(via Package Manager) Select Add package from git URL from the add menu. A text box and an Add button appear. Enter a valid Git URL in the text box:
-https://github.com/llarean/unity-tiny-builder.git
-(via Package Manager) add the following line to Packages/manifest.json:
-"com.llarean.unity-tiny-builder": "https://github.com/llarean/unity-tiny-builder.git"
+
+# INSTALLATION
+
+~~There are 5 ways to install this utility:~~
+
+- ~~import .unitypackage via Assets-Import Package~~
+- ~~clone/download this repository and move files to your Unity project's Assets folder~~
+- ~~import it from Asset Store~~
+- (via Package Manager) Select Add package from git URL from the add menu. 
+  - A text box and an Add button appear. Enter a valid Git URL in the text box:
+  `https://github.com/llarean/unity-tiny-builder.git`
+- (via Package Manager) add the following line to Packages/manifest.json:
+  `"com.llarean.unity-tiny-builder": "https://github.com/llarean/unity-tiny-builder.git"`
+
+# PLANS
+
+- [ ] Technical improvements;
+- [ ] Refactoring;
+- [ ] Tests;
+- [ ] Repository design;
+- [ ] Publication.
