@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,20 +10,20 @@ namespace TinyBuilder
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKCurrent, false, 2)]
         private static void BuildAPKCurrent()
         {
-            new Build().APK();
+            new Build(GetBuildSettings()).APK();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildAABCurrent, false, 3)]
         private static void BuildAABCurrent()
         {
-            new Build().AAB();
+            new Build(GetBuildSettings()).AAB();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKAABCurrent, false, 4)]
         private static void BuildBothCurrent()
         {
-            new Build().APK();
-            new Build().AAB();
+            new Build(GetBuildSettings()).APK();
+            new Build(GetBuildSettings()).AAB();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKIncrement, false, 21)]
@@ -31,7 +32,7 @@ namespace TinyBuilder
             var appVersion = new AppVersion(Application.version).Increment();
             new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
 
-            new Build().APK();
+            new Build(GetBuildSettings()).APK();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildAABIncrement, false, 22)]
@@ -40,7 +41,7 @@ namespace TinyBuilder
             var appVersion = new AppVersion(Application.version).Increment();
             new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
 
-            new Build().AAB();
+            new Build(GetBuildSettings()).AAB();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKAABIncrement, false, 23)]
@@ -49,14 +50,26 @@ namespace TinyBuilder
             var appVersion = new AppVersion(Application.version).Increment();
             new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
 
-            new Build().APK();
-            new Build().AAB();
+            new Build(GetBuildSettings()).APK();
+            new Build(GetBuildSettings()).AAB();
         }
 
         [MenuItem(MenuNames.Build + MenuNames.BuildSettings, false, 41)]
         private static void ShowBuildSettings()
         {
             BuildSettingsWindow.ShowWindow();
+        }
+
+        private static BuildSettings GetBuildSettings()
+        {
+            var buildSettings = new BuildSettings(FolderPaths.BuildSettings);
+
+            if (buildSettings.Exists() == false)
+            {
+                throw new FileNotFoundException($"File does not exist: {FolderPaths.BuildSettings}");
+            }
+            
+            return buildSettings;
         }
     }
 }

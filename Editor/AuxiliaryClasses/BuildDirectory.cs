@@ -13,18 +13,18 @@ namespace TinyBuilder
         {
             _folderPath = folderPath;
         }
-
-        public bool Exists()
+        
+        public void Create()
         {
-            return Directory.Exists(_folderPath);
-        }
-
-        public BuildDirectory Create(string folderPath)
-        {
-            Directory.CreateDirectory(folderPath);
-            Debug.Log("The directory has been created: " + folderPath);
-
-            return new BuildDirectory(folderPath);
+            if (Directory.Exists(_folderPath) == false)
+            {
+                Directory.CreateDirectory(_folderPath);
+                Debug.Log("The directory has been created: " + _folderPath);
+            }
+            else
+            {
+                Debug.Log("The directory of the assembly: " + _folderPath);
+            }
         }
 
         public void Open()

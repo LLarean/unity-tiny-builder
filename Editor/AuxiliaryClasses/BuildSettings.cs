@@ -13,25 +13,31 @@ namespace TinyBuilder
             _buildSettingsPath = buildSettingsPath;
         }
 
-        public bool HaveFile()
+        public bool Exists()
         {
             var buildSettings = AssetDatabase.LoadAssetAtPath<TinyBuilderSettings>(_buildSettingsPath);
             return buildSettings != null;
         }
-
-        public string FileName()
+        
+        public string FileNameAPK()
         {
             var buildSettings = AssetDatabase.LoadAssetAtPath<TinyBuilderSettings>(_buildSettingsPath);
-            return buildSettings.Prefix + buildSettings.ProjectName + Application.version + buildSettings.Postfix;
+            return buildSettings.Prefix + buildSettings.ProjectName + Application.version + buildSettings.Postfix + FileNameParts.ApkExtension;
         }
         
-        public string APKFilePath()
+        public string FileNameAAB()
+        {
+            var buildSettings = AssetDatabase.LoadAssetAtPath<TinyBuilderSettings>(_buildSettingsPath);
+            return buildSettings.Prefix + buildSettings.ProjectName + Application.version + buildSettings.Postfix + FileNameParts.AabExtension;
+        }
+        
+        public string DirectoryAPK()
         {
             var buildSettings = AssetDatabase.LoadAssetAtPath<TinyBuilderSettings>(_buildSettingsPath);
             return buildSettings.APKOutputPath;
         }
         
-        public string AABFilePath()
+        public string DirectoryAAB()
         {
             var buildSettings = AssetDatabase.LoadAssetAtPath<TinyBuilderSettings>(_buildSettingsPath);
             return buildSettings.AABOutputPath;

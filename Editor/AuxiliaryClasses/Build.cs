@@ -8,21 +8,28 @@ namespace TinyBuilder
 {
     public record Build
     {
+        private readonly BuildSettings _buildSettings;
+        
         private BuildDirectory _buildDirectory;
 
+        public Build(BuildSettings buildSettings)
+        {
+            _buildSettings = buildSettings;
+        }
+        
         public void APK()
         {
-            CreateBuildDirectory(FolderPaths.APK);
-            string fileName = GetFileName() + FileNameParts.ApkExtension;
-            string folderPath = GetAPKFilePath();
+            new BuildDirectory(FolderPaths.APK).Create();
+            string folderPath = _buildSettings.DirectoryAPK();
+            string fileName = _buildSettings.FileNameAPK();
             BuildPipeline(folderPath, fileName);
         }
         
         public void AAB()
         {
-            CreateBuildDirectory(FolderPaths.AAB);
-            string fileName = GetFileName() + FileNameParts.AabExtension;
-            string folderPath = GetAPKFilePath();
+            new BuildDirectory(FolderPaths.AAB).Create();
+            string folderPath = _buildSettings.DirectoryAAB();
+            string fileName = _buildSettings.FileNameAAB();
             BuildPipeline(folderPath, fileName);
         }
         
@@ -56,52 +63,6 @@ namespace TinyBuilder
             {
                 Debug.LogError("BuildSummary.result = " + buildSummary.result);
             }
-        }
-
-        private void CreateBuildDirectory(string directoryPath)
-        {
-            _buildDirectory = new BuildDirectory(directoryPath);
-            
-            if (_buildDirectory.Exists() == false)
-            {
-                _buildDirectory = _buildDirectory.Create(directoryPath);
-            }
-        }
-        
-        private string GetFileName()
-        {
-            var settings = new BuildSettings(FolderPaths.BuildSettings);
-
-            if (settings.HaveFile() == false)
-            {
-                throw new FileNotFoundException($"File does not exist: {FolderPaths.BuildSettings}");
-            }
-
-            return settings.FileName();
-        }
-        
-        private string GetAPKFilePath()
-        {
-            var settings = new BuildSettings(FolderPaths.BuildSettings);
-
-            if (settings.HaveFile() == false)
-            {
-                throw new FileNotFoundException($"File does not exist: {FolderPaths.BuildSettings}");
-            }
-
-            return settings.APKFilePath();
-        }
-        
-        private string GetAABFilePath()
-        {
-            var settings = new BuildSettings(FolderPaths.BuildSettings);
-
-            if (settings.HaveFile() == false)
-            {
-                throw new FileNotFoundException($"File does not exist: {FolderPaths.BuildSettings}");
-            }
-
-            return settings.AABFilePath();
         }
     }
 }
