@@ -13,16 +13,17 @@ namespace TinyBuilder
         public void APK()
         {
             CreateBuildDirectory(FolderPaths.APK);
-            string fileName = GetFileName() + GetAPKFilePath();
-            
-            BuildPipeline(FolderPaths.APK, fileName);
+            string fileName = GetFileName() + FileNameParts.ApkExtension;
+            string folderPath = GetAPKFilePath();
+            BuildPipeline(folderPath, fileName);
         }
         
         public void AAB()
         {
             CreateBuildDirectory(FolderPaths.AAB);
-            string fileName = GetFileName() + GetAABFilePath();
-            BuildPipeline(FolderPaths.AAB, fileName);
+            string fileName = GetFileName() + FileNameParts.AabExtension;
+            string folderPath = GetAPKFilePath();
+            BuildPipeline(folderPath, fileName);
         }
         
         private void BuildPipeline(string filePath, string fileName)
