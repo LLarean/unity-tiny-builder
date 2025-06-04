@@ -7,6 +7,9 @@
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/LLarean/unity-tiny-builder/blob/master/LICENSE.md)
 [![CodeFactor](https://www.codefactor.io/repository/github/llarean/unity-tiny-builder/badge)](https://www.codefactor.io/repository/github/llarean/unity-tiny-builder)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![Releases](https://img.shields.io/github/v/release/llarean/unity-tiny-builder)](https://github.com/llarean/unity-tiny-builder/releases)
+![stability-unstable](https://img.shields.io/badge/stability-unstable-red.svg)
 
 A simple Android build automation utility
 
