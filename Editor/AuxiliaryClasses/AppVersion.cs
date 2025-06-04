@@ -16,20 +16,12 @@ namespace TinyBuilder
 
         public AppVersion Increment()
         {
-            string[] versionParts = _value.Split('.');
+            var version = new SemanticVersion(_value);
 
-            if (versionParts.Length != 3)
-            {
-                PlayerSettings.bundleVersion = "0.0.1";
-                return new AppVersion(PlayerSettings.bundleVersion);
-            }
-
-            int major = int.Parse(versionParts[0]);
-            int minor = int.Parse(versionParts[1]);
-            int patch = int.Parse(versionParts[2]);
+            int patch = version.Patch();
             patch++;
 
-            PlayerSettings.bundleVersion = $"{major}.{minor}.{patch}";
+            PlayerSettings.bundleVersion = $"{version.Major()}.{version.Minor()}.{patch}";
 
             return new AppVersion(PlayerSettings.bundleVersion);
         }
