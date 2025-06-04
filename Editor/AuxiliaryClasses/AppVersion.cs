@@ -5,12 +5,7 @@ namespace TinyBuilder
 {
     public record AppVersion
     {
-        private readonly string _value;
-
-        public AppVersion(string value)
-        {
-            _value = value;
-        }
+        private readonly string _value = PlayerSettings.bundleVersion;
 
         public string Value() => _value;
 
@@ -23,7 +18,7 @@ namespace TinyBuilder
 
             PlayerSettings.bundleVersion = $"{version.Major()}.{version.Minor()}.{patch}";
 
-            return new AppVersion(PlayerSettings.bundleVersion);
+            return new AppVersion();
         }
     }
 }

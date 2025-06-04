@@ -1,8 +1,7 @@
 using System;
 using NUnit.Framework;
-using TinyBuilder;
 
-namespace Tests.Editor
+namespace TinyBuilder.Tests.Editor
 {
     public class SemanticVersionTests
     {
