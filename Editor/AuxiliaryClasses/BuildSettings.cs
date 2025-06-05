@@ -42,6 +42,19 @@ namespace TinyBuilder
             var buildSettings = AssetDatabase.LoadAssetAtPath<TinyBuilderSettings>(_buildSettingsPath);
             return buildSettings.AABOutputPath;
         }
+        
+        public bool Filled()
+        {
+            var buildSettings = AssetDatabase.LoadAssetAtPath<TinyBuilderSettings>(_buildSettingsPath);
+
+            if (PlayerSettings.Android.keystorePass != buildSettings.KeystorePassword) return false;
+            if (PlayerSettings.Android.keystoreName != buildSettings.KeystorePath)return false;
+            if (PlayerSettings.Android.keyaliasName != buildSettings.KeyaliasName)return false;
+            if (PlayerSettings.Android.keyaliasPass != buildSettings.KeyaliasPassword)return false;
+            
+            return true;
+        }
+
     }
 }
 #endif

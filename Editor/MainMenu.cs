@@ -1,7 +1,7 @@
 #if UNITY_EDITOR
+using System;
 using System.IO;
 using UnityEditor;
-using UnityEngine;
 
 namespace TinyBuilder
 {
@@ -29,7 +29,7 @@ namespace TinyBuilder
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKIncrement, false, 21)]
         private static void BuildAPKIncrement()
         {
-            var appVersion = new AppVersion(Application.version).Increment();
+            var appVersion = new AppVersion().Increment();
             new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
 
             new Build(GetBuildSettings()).APK();
@@ -38,7 +38,7 @@ namespace TinyBuilder
         [MenuItem(MenuNames.Build + MenuNames.BuildAABIncrement, false, 22)]
         private static void BuildAABIncrement()
         {
-            var appVersion = new AppVersion(Application.version).Increment();
+            var appVersion = new AppVersion().Increment();
             new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
 
             new Build(GetBuildSettings()).AAB();
@@ -47,7 +47,7 @@ namespace TinyBuilder
         [MenuItem(MenuNames.Build + MenuNames.BuildAPKAABIncrement, false, 23)]
         private static void BuildBothIncrement()
         {
-            var appVersion = new AppVersion(Application.version).Increment();
+            var appVersion = new AppVersion().Increment();
             new BuildNumber(appVersion.Value()).EqualizeWithAppVersion();
 
             new Build(GetBuildSettings()).APK();
@@ -67,6 +67,12 @@ namespace TinyBuilder
             if (buildSettings.Exists() == false)
             {
                 throw new FileNotFoundException($"File does not exist: {FolderPaths.BuildSettings}");
+            }
+
+            if (buildSettings.Filled() == false)
+            {
+                BuildSettingsWindow.ShowWindow();
+                throw new InvalidOperationException("Settings not set");
             }
             
             return buildSettings;
