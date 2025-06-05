@@ -45,4 +45,5 @@ There are 4 ways to install this utility:
 - [ ] Tests;
 - [ ] Repository design;
 - [ ] Using the package at work;
+- [ ] Improvements for use with iOS (or not);
 - [ ] Publishing in the [Asset Store](https://assetstore.unity.com/).
