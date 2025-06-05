@@ -11,15 +11,13 @@
 [![Releases](https://img.shields.io/github/v/release/llarean/unity-tiny-builder)](https://github.com/llarean/unity-tiny-builder/releases)
 ![stability-unstable](https://img.shields.io/badge/stability-unstable-red.svg)
 
-A simple Android build automation utility
+A simple build automation utility (currently only for Android)
 
 This repository is a practice of writing programs in the spirit of [Elegant Objects](https://www.elegantobjects.org/)
 
-The [Version Convention](https://semver.org/) that is used during the build 
-
 # FEATURES
 
-- The build file name will be in the ProjectName_version format (`ProjectName_1.0.1`);
+- The build file name will be in the ProjectName_[version](https://semver.org/) format (`ProjectName_1.0.1`);
 - The ability to add a prefix to the file name;
 - The ability to add a postfix to the file name;
 - The ability to assemble both APK and AAB separately, or together;
@@ -29,16 +27,16 @@ The [Version Convention](https://semver.org/) that is used during the build
 
 # INSTALLATION
 
-~~There are 5 ways to install this utility:~~
+There are 4 ways to install this utility:
 
-- ~~import .unitypackage via Assets-Import Package~~
-- ~~clone/download this repository and move files to your Unity project's Assets folder~~
-- ~~import it from Asset Store~~
+- import [TinyBuilder.unitypackage](https://github.com/llarean/unity-tiny-builder/releases) via *Assets-Import Package*
+- clone/[download](https://github.com/llarean/unity-tiny-builder/archive/master.zip) this repository and move files to your Unity project's *Assets* folder
 - (via Package Manager) Select Add package from git URL from the add menu. 
   - A text box and an Add button appear. Enter a valid Git URL in the text box:
   `https://github.com/llarean/unity-tiny-builder.git`
 - (via Package Manager) add the following line to Packages/manifest.json:
   `"com.llarean.unity-tiny-builder": "https://github.com/llarean/unity-tiny-builder.git"`
+
 
 # PLANS
 
@@ -46,4 +44,5 @@ The [Version Convention](https://semver.org/) that is used during the build
 - [ ] Refactoring;
 - [ ] Tests;
 - [ ] Repository design;
-- [ ] Publication.
+- [ ] Using the package at work;
+- [ ] Publishing in the [Asset Store](https://assetstore.unity.com/).
