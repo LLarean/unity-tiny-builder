@@ -64,7 +64,7 @@ Add the following line to your `Packages/manifest.json`:
    - Configure version increment options
 3. Click **Build** to start the automated build process
 
-## 🗺Roadmap
+## Roadmap
 
 - [ ] **Technical Improvements**: Performance optimizations and code enhancements
 - [ ] **Refactoring**: Code structure improvements following EO principles
